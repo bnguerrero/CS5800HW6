@@ -22,4 +22,18 @@ public class VendingMachine
     {
         this.message = message;
     }
+    
+    public void waiting()
+    {
+        getState().waitingForMoney(this);
+    }
+    public void idle()
+    {
+        getState().idle(this);
+    }
+    public void dispending()
+    {
+        getState().dispensingSnack(this);
+    }
+
 }
