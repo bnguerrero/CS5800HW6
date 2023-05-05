@@ -1,16 +1,21 @@
 package CS5800HW6;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class VendingMachine 
 {
-    private State state = new IdleState();
+    List<Snack> snacks = new ArrayList<>();
+    
+    private StateOfVendingMachine state = new IdleState();
 
     private String message = "message";
 
-    public void setState(State state)
+    public void setState(StateOfVendingMachine state)
     {
         this.state = state;
     }
-    public State getState()
+    public StateOfVendingMachine getState()
     {
         return state;
     }
