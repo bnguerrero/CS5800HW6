@@ -20,8 +20,6 @@ public class VendingMachine
         snacks.add(new Snack("doritos", 1.00, 2));
         snacks.add(new Snack("kitkat", .50, 3));
         snacks.add(new Snack("snickers", .75, 4));
-
-
     }
 
     private String message = "message";
@@ -43,22 +41,19 @@ public class VendingMachine
         this.message = message;
     }
     
-    public void waiting()
+    public void selectSnack()
     {
-        getState().waitingForMoney(this);
+        getState().selectSnack(this);
     }
-    public void idle()
+    public void insertMoney()
     {
-        getState().idle(this);
+        getState().insertMoney(this);
     }
-    public void dispending()
+    public void dispenseSnack()
     {
-        getState().dispensingSnack(this);
+        getState().dispenseSnack(this);
     }
 
-    public void selectSnack(String snack)
-    {
-        if (sna)
-    }
+    
 
 }

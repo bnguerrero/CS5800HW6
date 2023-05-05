@@ -1,17 +1,18 @@
 package CS5800HW6;
 
-List<Snack> snacks;
+import java.util.List;
 
 public class SnackDispenseHandler 
 {
     private SnackDispenseHandler next;
+    List<Snack> snacks;
 
     public SnackDispenseHandler(List<Snack> snacks)
     {
         this.snacks = snacks;
     }
 
-    public void setNextHandler(AuthenticationHandler next)
+    public void setNextHandler(SnackDispenseHandler next)
     {
         this.next = next;
     }

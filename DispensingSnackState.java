@@ -4,7 +4,7 @@ public class DispensingSnackState implements StateOfVendingMachine
 {
 
     @Override
-    public void idle(VendingMachine vendingMachine) 
+    public void selectSnack(VendingMachine vendingMachine) 
     {
         vendingMachine.setState(new IdleState());
         vendingMachine.setMessage("Please make a selection");
@@ -12,7 +12,7 @@ public class DispensingSnackState implements StateOfVendingMachine
     }
 
     @Override
-    public void waitingForMoney(VendingMachine vendingMachine)
+    public void insertMoney(VendingMachine vendingMachine)
     {
         vendingMachine.setState(new WaitForMoneyState());
         vendingMachine.setMessage("Wating for money");
@@ -20,7 +20,7 @@ public class DispensingSnackState implements StateOfVendingMachine
     }
 
     @Override
-    public void dispensingSnack(VendingMachine vendingMachine) 
+    public void dispenseSnack(VendingMachine vendingMachine) 
     {
         // do nothing
     }
