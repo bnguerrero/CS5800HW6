@@ -1,6 +1,6 @@
 package CS5800HW6;
 
-public class DispensingSnackState implements State
+public class DispensingSnackState implements StateOfVendingMachine
 {
 
     @Override

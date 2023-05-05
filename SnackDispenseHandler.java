@@ -1,14 +1,32 @@
 package CS5800HW6;
 
-public class SnackDispenseHandler extends AuthenticationHandler
-{
+List<Snack> snacks;
 
-    public SnackDispenseHandler(AuthenticationHandler next) 
+public class SnackDispenseHandler 
+{
+    private SnackDispenseHandler next;
+
+    public SnackDispenseHandler(List<Snack> snacks)
     {
-        super(next);
+        this.snacks = snacks;
     }
-    public void handleRequest(String requestType)
+
+    public void setNextHandler(AuthenticationHandler next)
     {
-        if()
+        this.next = next;
+    }
+    
+    public void snackRequest(Snack snackType, double money, int quantity)
+    {
+        if(snackType.getQuantity() >= quantity && snackType.getPrice()*quantity <= money)
+        {
+            System.out.println("dispensing snack(s)");
+            money -= snackType.getPrice()*quantity;
+
+        }
+        if(money >0 && next != null)
+        {
+            next.snackRequest(snackType,money,quantity);
+        }
     }
 }

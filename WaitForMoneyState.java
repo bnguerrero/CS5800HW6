@@ -1,6 +1,6 @@
 package CS5800HW6;
 
-public class WaitForMoneyState implements State
+public class WaitForMoneyState implements StateOfVendingMachine
 {
 
     @Override

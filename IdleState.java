@@ -1,6 +1,6 @@
 package CS5800HW6;
 
-public class IdleState implements State
+public class IdleState implements StateOfVendingMachine
 {
 
     @Override
