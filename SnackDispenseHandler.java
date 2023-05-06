@@ -1,24 +1,25 @@
 package CS5800HW6;
 
-import java.util.List;
 
-public class SnackDispenseHandler 
+public abstract class SnackDispenseHandler 
 {
     private SnackDispenseHandler next;
-    List<Snack> snacks;
+    
 
-    public SnackDispenseHandler(List<Snack> snacks)
-    {
-        this.snacks = snacks;
-    }
-
-    public void setNextHandler(SnackDispenseHandler next)
+    public SnackDispenseHandler(SnackDispenseHandler next)
     {
         this.next = next;
     }
     
-    public void snackRequest(Snack snackType, double money, int quantity)
+    public  void snackRequest(Snack snack, double money, int quantity)
     {
+        if(next != null && money > 0)
+        {
+            next.snackRequest(snack, money, quantity);
+        }
+    }
+    
+        /** 
         if(snackType.getQuantity() >= quantity && snackType.getPrice()*quantity <= money)
         {
             System.out.println("dispensing snack(s)");
@@ -29,5 +30,6 @@ public class SnackDispenseHandler
         {
             next.snackRequest(snackType,money,quantity);
         }
-    }
+        */
+
 }

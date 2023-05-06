@@ -13,13 +13,14 @@ public class VendingMachine
     {
         snacks = new ArrayList<>();
         state = new IdleState();
-        this.snackHandler = new SnackDispenseHandler(this.snacks);
-        snacks.add(new Snack("pepsi", 1.50, 9));
-        snacks.add(new Snack("coke", 1.25, 5));
-        snacks.add(new Snack("cheetos", 2.00, 10));
-        snacks.add(new Snack("doritos", 1.00, 2));
-        snacks.add(new Snack("kitkat", .50, 3));
-        snacks.add(new Snack("snickers", .75, 4));
+        this.snackHandler = new ChipDispenseHandler(new SodaDispenseHandler(new CandyDispenseHandler(null)));
+        
+        snacks.add(new Snack("pepsi", 1.50, 9, "soda"));
+        snacks.add(new Snack("coke", 1.25, 5, "soda"));
+        snacks.add(new Snack("cheetos", 2.00, 10, "chips"));
+        snacks.add(new Snack("doritos", 1.00, 2, "chips"));
+        snacks.add(new Snack("kitkat", .50, 3, "candy"));
+        snacks.add(new Snack("snickers", .75, 4, "candy"));
     }
 
     private String message = "message";
