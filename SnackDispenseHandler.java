@@ -18,18 +18,5 @@ public abstract class SnackDispenseHandler
             next.snackRequest(snack, money, quantity);
         }
     }
-    
-        /** 
-        if(snackType.getQuantity() >= quantity && snackType.getPrice()*quantity <= money)
-        {
-            System.out.println("dispensing snack(s)");
-            money -= snackType.getPrice()*quantity;
-
-        }
-        if(money >0 && next != null)
-        {
-            next.snackRequest(snackType,money,quantity);
-        }
-        */
 
 }

@@ -11,7 +11,7 @@ public class CandyDispenseHandler extends SnackDispenseHandler
     @Override
     public void snackRequest(Snack snack, double money, int quantity) 
     {
-        if(snack.getQuantity() >= quantity && snack.getPrice()*quantity <= money && snack.getTypeOfSnack() == "candy")
+        if(snack.getQuantity() >= quantity && snack.getPrice()*quantity <= money && snack.getTypeOfSnack().equals("candy"))
         {
             System.out.println("dispensing candy snack(s)");
             money -= snack.getPrice()*quantity;
@@ -19,7 +19,7 @@ public class CandyDispenseHandler extends SnackDispenseHandler
         }
         else  
         {
-            System.out.println("I was passed from cany handler");
+            System.out.println("not enought money or stock available");
             super.snackRequest(snack, money, quantity);
         }
     }

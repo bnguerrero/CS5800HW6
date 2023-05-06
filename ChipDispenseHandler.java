@@ -11,7 +11,7 @@ public class ChipDispenseHandler extends SnackDispenseHandler
     @Override
     public void snackRequest(Snack snack, double money, int quantity) 
     {
-        if(snack.getQuantity() >= quantity && snack.getPrice()*quantity <= money && snack.getTypeOfSnack() == "chip")
+        if(snack.getQuantity() >= quantity && snack.getPrice()*quantity <= money && snack.getTypeOfSnack().equals("chip"))
         {
             System.out.println("dispensing chip snack(s)");
             money -= snack.getPrice()*quantity;
@@ -19,7 +19,7 @@ public class ChipDispenseHandler extends SnackDispenseHandler
         }
         else  
         {
-            System.out.println("I was passed from chip handler");
+            System.out.println("Checking for snack");
             super.snackRequest(snack, money, quantity);
         }
     }

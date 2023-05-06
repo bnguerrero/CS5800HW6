@@ -2,27 +2,32 @@ package CS5800HW6;
 
 public class WaitForMoneyState implements StateOfVendingMachine
 {
+    private Snack snack;
 
-    @Override
-    public void selectSnack(VendingMachine vendingMachine) 
+    public WaitForMoneyState(Snack snack)
     {
-        vendingMachine.setState(new IdleState());
-        vendingMachine.setMessage("Please make a selection");
-        System.out.println("Vending machine message: " + vendingMachine.getMessage());
+        this.snack = snack;
     }
 
     @Override
-    public void insertMoney(VendingMachine vendingMachine) 
+    public void selectSnack(String snackName, VendingMachine vendingMachine) 
     {
-        // do nothing 
+        System.out.println("please insert money and quantity of snacks.");
     }
 
     @Override
-    public void dispenseSnack(VendingMachine vendingMachine) 
+    public void insertMoney(double money, int quantity, SnackDispenseHandler snackHandler, VendingMachine vendingMachine) 
     {
-        vendingMachine.setState(new DispensingSnackState());
-        vendingMachine.setMessage("Dispensing snack");
-        System.out.println("Vending machine message: " + vendingMachine.getMessage());
+        if (snack.stocked() ) 
+        {
+            vendingMachine.setState(new DispensingSnackState(snack, money, quantity, snackHandler));
+        }
     }
-    
+
+    @Override
+    public void dispenseSnack(SnackDispenseHandler handler, VendingMachine vendingMachine) 
+    {
+        System.out.println("please insert money and quantity of snacks.");
+    }
+   
 }

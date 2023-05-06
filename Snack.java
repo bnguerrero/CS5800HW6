@@ -31,4 +31,12 @@ public class Snack
     {
         return typeOfSnack;
     }
+    public boolean stocked()
+    {
+        return this.quantity >= quantity;
+    }
+    public void dispense(int quantity)
+    {
+        this.quantity -= quantity;
+    }
 }

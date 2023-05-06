@@ -7,18 +7,18 @@ public class VendingMachine
 {
     private List<Snack> snacks;
     private StateOfVendingMachine state;
-    private SnackDispenseHandler snackHandler;
+    private SnackDispenseHandler snackHandler; 
     
     public VendingMachine()
     {
         snacks = new ArrayList<>();
         state = new IdleState();
         this.snackHandler = new ChipDispenseHandler(new SodaDispenseHandler(new CandyDispenseHandler(null)));
-        
+
         snacks.add(new Snack("pepsi", 1.50, 9, "soda"));
         snacks.add(new Snack("coke", 1.25, 5, "soda"));
-        snacks.add(new Snack("cheetos", 2.00, 10, "chips"));
-        snacks.add(new Snack("doritos", 1.00, 2, "chips"));
+        snacks.add(new Snack("cheetos", 2.00, 10, "chip"));
+        snacks.add(new Snack("doritos", 1.00, 2, "chip"));
         snacks.add(new Snack("kitkat", .50, 3, "candy"));
         snacks.add(new Snack("snickers", .75, 4, "candy"));
     }
@@ -42,19 +42,25 @@ public class VendingMachine
         this.message = message;
     }
     
-    public void selectSnack()
+    public void selectSnack(String snackName)
     {
-        getState().selectSnack(this);
+        getState().selectSnack(snackName, this);
+
     }
-    public void insertMoney()
+    public void insertMoney(double money, int quantity)
     {
-        getState().insertMoney(this);
+        getState().insertMoney(money, quantity, snackHandler,  this);
     }
     public void dispenseSnack()
     {
-        getState().dispenseSnack(this);
+        getState().dispenseSnack(snackHandler, this);
+        //snackHandler.snackRequest(snack, 0, 0);
     }
 
+    public List<Snack> getSnacks()
+    {
+        return snacks;
+    }
     
 
 }

@@ -2,28 +2,33 @@ package CS5800HW6;
 
 public class IdleState implements StateOfVendingMachine
 {
-
+    Snack selectedSnack;
+    
     @Override
-    public void selectSnack(VendingMachine vendingMachine) 
+    public void selectSnack(String snackName, VendingMachine vendingMachine) 
     {
-        // do nothing
+        for (Snack snack : vendingMachine.getSnacks()) 
+        {
+            if (snack.getName().equals(snackName) && snack.stocked()) 
+            {
+                this.selectedSnack = snack;
+                vendingMachine.setState(new WaitForMoneyState(selectedSnack));
+                System.out.println("Selected snack: " + snack.getName());
+            }
+        }
+       
     }
 
     @Override
-    public void insertMoney(VendingMachine vendingMachine) 
+    public void insertMoney(double money, int quantity, SnackDispenseHandler snackHandler, VendingMachine vendingMachine) 
     {
-        vendingMachine.setState(new WaitForMoneyState());
-        vendingMachine.setMessage("Wating for money");
-        System.out.println("Vending machine message: " + vendingMachine.getMessage());
+        System.out.println("need to make a selection first");
     }
 
     @Override
-    public void dispenseSnack(VendingMachine vendingMachine) 
+    public void dispenseSnack(SnackDispenseHandler snackHandler, VendingMachine vendingMachine)
     {
-       vendingMachine.setState(new DispensingSnackState());
-       vendingMachine.setMessage("dispending snack");
-       System.out.println("Vending machine message: " + vendingMachine.getMessage());
-
+        System.out.println("need to make a selection first");
     }
     
 }
