@@ -32,7 +32,9 @@ public class DispensingSnackState implements StateOfVendingMachine
     public void dispenseSnack( SnackDispenseHandler snackHandler, VendingMachine vendingMachine)
     {
         snackHandler.snackRequest(snack, this.money, this.quantity);
+        snack.setQuantity(snack.getQuantity()-quantity);
         vendingMachine.setState(new IdleState());
+
     }
     
 }

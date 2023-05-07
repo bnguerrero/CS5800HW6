@@ -26,7 +26,11 @@ public class Snack
     public int getQuantity()
     {
         return quantity;
-    }    
+    }   
+    public void setQuantity(int newQuantity) 
+    {
+        this.quantity = newQuantity;
+    }
     public String getTypeOfSnack()
     {
         return typeOfSnack;

@@ -54,7 +54,7 @@ public class VendingMachine
     public void dispenseSnack()
     {
         getState().dispenseSnack(snackHandler, this);
-        //snackHandler.snackRequest(snack, 0, 0);
+        
     }
 
     public List<Snack> getSnacks()
